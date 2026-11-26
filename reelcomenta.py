@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """reelcomenta — um reel de terceiro vira o SEU reel comentado:
 o vídeo original passa com a música dele baixa, o avatar do Nei comenta no canto,
-os números entram num painel com a fonte, vem a pergunta e o fecho com os cursos grátis do inema.club.
+os números entram num painel com a fonte, vem a pergunta e o fecho com os cursos grátis do ARCKHÉ AI.
 
   reelcomenta.py novo <link> [--id slug]   baixa o reel, transcreve e cria edicoes/<data>-<slug>/roteiro.yaml
   reelcomenta.py previa <pasta>            quadros de prévia com tempo estimado (antes do avatar)
@@ -22,8 +22,8 @@ RAIZ = Path(__file__).resolve().parent
 CFG = {
     "cardshorts": Path(os.environ.get("RC_CARDSHORTS", HOME / "projetos/cardshorts")),
     "explicavideos": Path(os.environ.get("RC_EXPLICAVIDEOS", HOME / "projetos/explicavideos")),
-    "inemavox": Path(os.environ.get("RC_INEMAVOX", HOME / "projetos/inemavox")),
-    "perfil_heygen": Path(os.environ.get("RC_PERFIL_HEYGEN", HOME / ".cache/inemaccbot/perfil-heygen")),
+    "ARCKHÉvox": Path(os.environ.get("RC_ARCKHÉVOX", HOME / "projetos/ARCKHÉvox")),
+    "perfil_heygen": Path(os.environ.get("RC_PERFIL_HEYGEN", HOME / ".cache/ARCKHÉccbot/perfil-heygen")),
     "template_heygen": os.environ.get("RC_TEMPLATE_HEYGEN", "TEMPLATE-AVATAR16"),
     "portal_dados": Path(os.environ.get("RC_PORTAL_DADOS", HOME / "projetos/portal/src/data/courses.data.json")),
     "capas": Path(os.environ.get("RC_CAPAS", HOME / ".cache/reelcomenta/capas")),
@@ -102,12 +102,12 @@ pergunta:
   virada: qualific
   depois: ["OU SE", "QUALIFICAR"]
 cta:
-  ancora: inema
+  ancora: ARCKHÉ
   linha1: "+{{cursos_100}} CURSOS"
   linha2: "GRATUITOS"
-  painel: "INEMA.CLUB"
+  painel: "ARCKHÉ AI"
   texto: "+{{cursos_100}} cursos de IA\\n100% gratuitos\\ndo zero ao avançado"
-final: ["INEMA.CLUB", "cursos gratuitos de IA", "começa hoje"]
+final: ["ARCKHÉ AI", "cursos gratuitos de IA", "começa hoje"]
 legenda_envio: ""
 """
 
@@ -119,14 +119,14 @@ def cmd_novo(link, ident=None):
     alvo = ref / "reel.mp4"
     if not alvo.exists():
         ok = False
-        if (CFG["inemavox"] / "baixar_v1.py").exists():
+        if (CFG["ARCKHÉvox"] / "baixar_v1.py").exists():
             r = subprocess.run(["python3", "baixar_v1.py", "--url", link, "--outdir", ref, "--quality", "1080p"],
-                               cwd=CFG["inemavox"], capture_output=True, text=True, timeout=600)
+                               cwd=CFG["ARCKHÉvox"], capture_output=True, text=True, timeout=600)
             achados = sorted(ref.glob("*.mp4"))
             if r.returncode == 0 and achados:
                 achados[0].rename(alvo); ok = True
-        if not ok:  # Instagram com cookies costuma falhar no inemavox; sem cookies funciona
-            log("inemavox nêo baixou; tentando yt-dlp sem cookies")
+        if not ok:  # Instagram com cookies costuma falhar no ARCKHÉvox; sem cookies funciona
+            log("ARCKHÉvox nêo baixou; tentando yt-dlp sem cookies")
             run(["yt-dlp", "-q", "-o", str(ref / "reel.%(ext)s"), "--merge-output-format", "mp4", link], timeout=600)
     log("reel", f"{dur(alvo):.1f} s")
     run(["ffmpeg", "-v", "error", "-y", "-i", alvo, "-vf", f"fps={12 / max(1, dur(alvo))},scale=270:-1,tile=6x2",
@@ -252,7 +252,7 @@ class Desenho:
         r, L = self.r, self.L
         d.rounded_rectangle((40, 60, 330, 122), 14, fill=VERM + (255,))
         d.text((185, 91), fmt(r.get("data") or "{hoje}"), font=fnt(MBLK, 38), fill=BRANCO, anchor="mm")
-        d.text((350, 91), "INEMA.CLUB", font=fnt(MXB, 30), fill=BRANCO + (220,), anchor="lm")
+        d.text((350, 91), "ARCKHÉ AI", font=fnt(MXB, 30), fill=BRANCO + (220,), anchor="lm")
         if t < L.primeiro:
             m = r["abertura"]
         elif t < L.perg:
@@ -303,7 +303,7 @@ class Desenho:
                 d.text((x + 40, y + 190), "OU...", font=fnt(ANTON, 92), fill=BRANCO)
             return
         c = r["cta"]
-        d.text((x + 40, y + 40), fmt(c.get("painel", "INEMA.CLUB")), font=caber(d, fmt(c.get("painel", "INEMA.CLUB")), ANTON, 104, w - 70), fill=AMB)
+        d.text((x + 40, y + 40), fmt(c.get("painel", "ARCKHÉ AI")), font=caber(d, fmt(c.get("painel", "ARCKHÉ AI")), ANTON, 104, w - 70), fill=AMB)
         d.text((x + 40, y + 190), fmt(c.get("texto", "")), font=fnt(MXB, 42), fill=BRANCO, spacing=12)
 
     def legenda(self, d, t):
@@ -324,7 +324,7 @@ class Desenho:
         if t >= L.total - 1.8 and t >= L.fim + 0.2:
             a = int(255 * ease((t - (L.total - 1.8)) / 0.4))
             d.rectangle((0, 0, W, H), fill=ESC + (a,))
-            fin = [fmt(s) for s in (self.r.get("final") or ["INEMA.CLUB"])]
+            fin = [fmt(s) for s in (self.r.get("final") or ["ARCKHÉ AI"])]
             d.text((W / 2, 820), fin[0], font=caber(d, fin[0], ANTON, 190, W - 80), fill=AMB + (a,), anchor="mm")
             for i, s in enumerate(fin[1:]):
                 d.text((W / 2, 980 + i * 80), s, font=fnt(MXB, 54), fill=BRANCO + (a,), anchor="mm")
@@ -504,7 +504,7 @@ def cmd_montar(pasta):
     reel = fundo_reel(r, L.cta + 0.5); mos, mh = mosaico(r); grad = gradientes(r)
     vel = (mh - H) / max(1.0, L.total - L.cta)
     crop = recorte_rosto(r); log("recorte do rosto", crop)
-    tag = B / "tag.txt"; tag.write_text(r.get("tag", "NEI MALDANER  |  INEMA"))
+    tag = B / "tag.txt"; tag.write_text(r.get("tag", "NEI MALDANER  |  ARCKHÉ"))
     ate = L.fim + 0.3
     tem_audio = bool(subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=index", "-of", "csv=p=0",
                                      str(r["_reel"])], capture_output=True, text=True).stdout.strip())

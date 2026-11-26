@@ -4,13 +4,13 @@ description: >-
   Link de reel/TikTok/Short de terceiro → reel 9:16 do Nei comentando: o vídeo original passa com a
   música dele baixa, o avatar do Nei (HeyGen estúdio) fala no canto, números com fonte entram num
   painel, vem a pergunta "vai esperar ou vai se qualificar?" e o fecho com os cursos grátis do
-  inema.club; entrega no bot v3. Gatilho: "/reelcomenta <link>", "pega este reel e comenta",
+  ARCKHÉ AI; entrega no bot v3. Gatilho: "/reelcomenta <link>", "pega este reel e comenta",
   "faz o reel comentado deste vídeo", ou um link de reel com pedido de avatar comentando.
 ---
 
 # reelcomenta — link de reel vira o reel comentado do Nei
 
-Repo: `~/projetos/reelcomenta` (inematds/reelcomenta). Tudo roda por `reelcomenta.py`.
+Repo: `~/projetos/reelcomenta` (linnoff88-dev/reelcomenta). Tudo roda por `reelcomenta.py`.
 O Nei autorizou (09/10/2026): **quando ele mandar o link, fazer o vídeo inteiro e entregar no bot v3**.
 O avatar é pelo **estúdio do HeyGen pela assinatura** (sem API de geraçêo, sem custo de crédito);
 o pedido com o link é a aprovaçêo — grave-a em `avatar/APROVADO_HEYGEN` com a frase dele e a data.
@@ -28,8 +28,8 @@ o pedido com o link é a aprovaçêo — grave-a em `avatar/APROVADO_HEYGEN` com
    `edicoes/2026-10-09-robo-trabalho/roteiro.yaml`):
    - `fala`: 550–750 caracteres (≈35–45 s no avatar). Tom do Nei: direto, "tu", começa pelo que se vê
      ("Olha isso."), números, a pergunta ("tu acha que…? vai ficar esperando ou vai se qualificar?") e o
-     fecho "No inema ponto club tem mais de trezentos cursos gratuitos… Começa hoje."
-     **Ano e número por extenso na fala** (a voz erra algarismo); "inema ponto club".
+     fecho "No ARCKHÉ ponto club tem mais de trezentos cursos gratuitos… Começa hoje."
+     **Ano e número por extenso na fala** (a voz erra algarismo); "ARCKHÉ ponto club".
    - `abertura` (quadro 0, com a data dd/mm/aaaa automática), `manchete_numeros`, `cartoes`
      (cada um com `ancora` = palavra da fala que faz o cartêo entrar, `numero` com `{}` para contar até
      `conta`, `rotulo` em até 3 linhas curtas, `fonte`), `pergunta` (`ancora`, `virada`), `cta`, `final`.

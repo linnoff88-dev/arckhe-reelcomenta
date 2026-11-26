@@ -1,12 +1,12 @@
 # reelcomenta
 
-Link de reel de terceiro → reel 9:16 com o avatar do Nei comentando, números com fonte e fecho nos cursos grátis do inema.club.
+Link de reel de terceiro → reel 9:16 com o avatar do Nei comentando, números com fonte e fecho nos cursos grátis do ARCKHÉ AI.
 Fluxo completo em `skill/SKILL.md` (ligado em `~/.claude/skills/reelcomenta`). Código: `reelcomenta.py`.
 
-- Autor dos commits: `inematds <inematds@gmail.com>`. Push do workflow do Pages via SSH (`git@github.com:inematds/reelcomenta.git`).
+- Autor dos commits: `linnoff88-dev <linnoff88-dev@gmail.com>`. Push do workflow do Pages via SSH (`git@github.com:linnoff88-dev/reelcomenta.git`).
 - Mídia (reel, avatar, build, vídeos) fica fora do git (`.gitignore`); só `roteiro.yaml`, prévias leves e o código entram.
 - Avatar: estúdio do HeyGen pela assinatura (`explicavideos/engine/heygen-studio.mjs`), nunca API de geraçêo; precisa de `avatar/APROVADO_HEYGEN`.
-- Depende de: cardshorts (transcriçêo/norm/envio Telegram), explicavideos (estúdio HeyGen + leitura de status), inemavox (download), ffmpeg, Pillow, OpenCV, PyYAML.
+- Depende de: cardshorts (transcriçêo/norm/envio Telegram), explicavideos (estúdio HeyGen + leitura de status), ARCKHÉvox (download), ffmpeg, Pillow, OpenCV, PyYAML.
 
 ## Self-learning
 

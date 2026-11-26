@@ -6,17 +6,17 @@
 </div>
 
 
-[![reelcomenta](guia/assets/banner.jpg)](https://inematds.github.io/reelcomenta/guia/)
+[![reelcomenta](guia/assets/banner.jpg)](https://linnoff88-dev.github.io/arckhe-/guia/)
 
 **ê°Å¸â¡Â§ê°Å¸â¡Â· [PortuguêÂªs](README.md) êÂ· ê°Å¸â¡Âºê°Å¸â¡Â¸ [English](README.en.md) êÂ· ê°Å¸â¡Âªê°Å¸â¡Â¸ [EspaêÂ±ol](README.es.md)**
 
 ## O que êÂ©
 
-O reelcomenta êÂ© uma ferramenta de linha de comando que pega o link de um reel, TikTok ou Short de outra pessoa e monta um vêÂ­deo vertical seu comentando aquele assunto. O vêÂ­deo original continua passando, com a mêÂºsica dele baixa. O seu avatar do HeyGen fala num canto da tela, os nêÂºmeros da sua pesquisa aparecem num painel com a fonte, e o vêÂ­deo termina com uma pergunta e a chamada para os cursos gratuitos do inema.club. êâ° para quem produz conteêÂºdo e quer surfar num vêÂ­deo que jêÂ¡ estêÂ¡ circulando, sem gravar nada. Precisa de Python, ffmpeg, uma conta HeyGen com o seu avatar e dos projetos cardshorts e explicavideos.
+O reelcomenta êÂ© uma ferramenta de linha de comando que pega o link de um reel, TikTok ou Short de outra pessoa e monta um vêÂ­deo vertical seu comentando aquele assunto. O vêÂ­deo original continua passando, com a mêÂºsica dele baixa. O seu avatar do HeyGen fala num canto da tela, os nêÂºmeros da sua pesquisa aparecem num painel com a fonte, e o vêÂ­deo termina com uma pergunta e a chamada para os cursos gratuitos do ARCKHÉ AI. êâ° para quem produz conteêÂºdo e quer surfar num vêÂ­deo que jêÂ¡ estêÂ¡ circulando, sem gravar nada. Precisa de Python, ffmpeg, uma conta HeyGen com o seu avatar e dos projetos cardshorts e explicavideos.
 
 ## ê°Å¸ââ Guia de uso
 
-Guia completo (landing + passo a passo): **https://inematds.github.io/reelcomenta/guia/**
+Guia completo (landing + passo a passo): **https://linnoff88-dev.github.io/arckhe-/guia/**
 
 ## O formato
 
@@ -25,7 +25,7 @@ Guia completo (landing + passo a passo): **https://inematds.github.io/reelcoment
 | Quadro 0 | data dd/mm/aaaa + manchete + o reel jêÂ¡ rodando | mêÂºsica do reel, baixa |
 | NêÂºmeros | painel com contador e fonte, na palavra exata da fala; o melhor trecho do reel em cêÂ¢mera lenta | avatar fala, mêÂºsica abaixa sozinha |
 | Pergunta | "ESPERAR" riscado ê¢â â "OU SE QUALIFICAR" | "vai ficar esperando ou vai se qualificar?" |
-| Fecho | mosaico das capas reais dos cursos + cartêÂ£o INEMA.CLUB | "+300 cursos gratuitosê¢â¬Â¦ comeêÂ§a hoje" |
+| Fecho | mosaico das capas reais dos cursos + cartêÂ£o ARCKHÉ AI | "+300 cursos gratuitosê¢â¬Â¦ comeêÂ§a hoje" |
 
 O avatar fica embaixo êÂ  direita (400êâ453, moldura êÂ¢mbar e nome), recortado no rosto automaticamente (OpenCV). A legenda vem palavra a palavra, a partir da transcriêÂ§êÂ£o da prêÂ³pria fala do avatar.
 
@@ -49,8 +49,8 @@ Para o Claude Code ou o Codex, a skill estêÂ¡ em [`skill/SKILL.md`](skill/S
 ## DependêÂªncias
 
 - Python 3 com Pillow, PyYAML e OpenCV; ffmpeg; yt-dlp.
-- [cardshorts](https://github.com/inematds/cardshorts): transcriêÂ§êÂ£o local com tempo por palavra e envio para o Telegram.
-- [explicavideos](https://github.com/inematds/explicavideos): estêÂºdio do HeyGen pelo navegador (sem API de geraêÂ§êÂ£o) e leitura de status.
+- [cardshorts](https://github.com/linnoff88-dev/cardshorts): transcriêÂ§êÂ£o local com tempo por palavra e envio para o Telegram.
+- [explicavideos](https://github.com/linnoff88-dev/explicavideos): estêÂºdio do HeyGen pelo navegador (sem API de geraêÂ§êÂ£o) e leitura de status.
 - Caminhos por variêÂ¡vel: `RC_CARDSHORTS`, `RC_EXPLICAVIDEOS`, `RC_PERFIL_HEYGEN`, `RC_TEMPLATE_HEYGEN`, `RC_PORTAL_DADOS`, `RC_CAPAS`, `RC_MUSICA`, `RC_DISPLAY`.
 
 ## EdiêÂ§êÂµes

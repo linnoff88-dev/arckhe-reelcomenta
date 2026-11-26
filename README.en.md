@@ -1,16 +1,16 @@
 # reelcomenta
 
-[![reelcomenta](guia/assets/banner-en.jpg)](https://inematds.github.io/reelcomenta/guia/en/)
+[![reelcomenta](guia/assets/banner-en.jpg)](https://linnoff88-dev.github.io/arckhe-/guia/en/)
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
 ## What it is
 
-reelcomenta is a command-line tool that takes the link of someone else's reel, TikTok or Short and builds a vertical video of your own commenting on that topic. The original video keeps playing, with its music turned down. Your HeyGen avatar speaks in a corner of the screen, the numbers from your research appear in a panel with their source, and the video ends with a question and a call to the free courses at inema.club. It is for people who produce content and want to ride a video that is already circulating, without recording anything. It needs Python, ffmpeg, a HeyGen account with your avatar, and the cardshorts and explicavideos projects.
+reelcomenta is a command-line tool that takes the link of someone else's reel, TikTok or Short and builds a vertical video of your own commenting on that topic. The original video keeps playing, with its music turned down. Your HeyGen avatar speaks in a corner of the screen, the numbers from your research appear in a panel with their source, and the video ends with a question and a call to the free courses at ARCKHÉ AI. It is for people who produce content and want to ride a video that is already circulating, without recording anything. It needs Python, ffmpeg, a HeyGen account with your avatar, and the cardshorts and explicavideos projects.
 
 ## 📖 User guide
 
-Full guide (landing + step by step): **https://inematds.github.io/reelcomenta/guia/en/**
+Full guide (landing + step by step): **https://linnoff88-dev.github.io/arckhe-/guia/en/**
 
 ## The format
 
@@ -19,7 +19,7 @@ Full guide (landing + step by step): **https://inematds.github.io/reelcomenta/gu
 | Frame 0 | date dd/mm/yyyy + headline + the reel already running | reel music, low |
 | Numbers | panel with counter and source, on the exact word of the speech; the best excerpt of the reel in slow motion | avatar speaks, music lowers by itself |
 | Question | "ESPERAR" struck through → "OU SE QUALIFICAR" | "will you keep waiting or will you get qualified?" |
-| Closing | mosaic of the real course covers + INEMA.CLUB card | "+300 free courses… start today" |
+| Closing | mosaic of the real course covers + ARCKHÉ AI card | "+300 free courses… start today" |
 
 The avatar sits at the bottom right (400×453, amber frame and name), automatically cropped to the face (OpenCV). Captions come word by word, from the transcription of the avatar's own speech.
 
@@ -43,8 +43,8 @@ For Claude Code or Codex, the skill is at [`skill/SKILL.md`](skill/SKILL.md): wi
 ## Dependencies
 
 - Python 3 with Pillow, PyYAML and OpenCV; ffmpeg; yt-dlp.
-- [cardshorts](https://github.com/inematds/cardshorts): local transcription with per-word timing and delivery to Telegram.
-- [explicavideos](https://github.com/inematds/explicavideos): HeyGen studio through the browser (no generation API) and status reader.
+- [cardshorts](https://github.com/linnoff88-dev/cardshorts): local transcription with per-word timing and delivery to Telegram.
+- [explicavideos](https://github.com/linnoff88-dev/explicavideos): HeyGen studio through the browser (no generation API) and status reader.
 - Paths via variables: `RC_CARDSHORTS`, `RC_EXPLICAVIDEOS`, `RC_PERFIL_HEYGEN`, `RC_TEMPLATE_HEYGEN`, `RC_PORTAL_DADOS`, `RC_CAPAS`, `RC_MUSICA`, `RC_DISPLAY`.
 
 ## Editions
