@@ -1,3 +1,3 @@
-| data | o que quebrou | menor correção | tipo |
+| data | o que quebrou | menor correçêo | tipo |
 |---|---|---|---|
 | 09/10/2026 | `fmt()` com `str.format` quebrou no `{}` do contador ("{} MILHÕES") | trocar por regex só para `{nome}` conhecido | prompt |

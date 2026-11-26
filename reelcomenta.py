@@ -31,7 +31,7 @@ CFG = {
     "display": os.environ.get("RC_DISPLAY", ":99"),
 }
 sys.path.insert(0, str(CFG["cardshorts"]))
-import cardshorts as cs  # noqa: E402  (transcrição com tempo por palavra, norm() e envio ao Telegram)
+import cardshorts as cs  # noqa: E402  (transcriçêo com tempo por palavra, norm() e envio ao Telegram)
 
 W, H, FPS = 1080, 1920, 30
 F = HOME / ".local/share/fonts"
@@ -80,10 +80,10 @@ def fmt(s):
 
 
 # ======================================================================= novo
-MODELO = """# reelcomenta — roteiro da edição {pasta}
+MODELO = """# reelcomenta — roteiro da ediçêo {pasta}
 # 1) Assista ref/folha.jpg e leia ref/transcricao.txt.  2) Pesquise os números (fonte de verdade, com ano).
 # 3) Escreva a fala no tom do Nei: direto, "tu", pergunta ao espectador; ANO E NÚMERO POR EXTENSO na fala.
-# 4) As âncoras são palavras da fala (minúsculas, sem acento) que disparam cada tela.
+# 4) As âncoras sêo palavras da fala (minúsculas, sem acento) que disparam cada tela.
 link: {link}
 data: "{hoje}"                 # sempre dd/mm/aaaa no quadro 0
 lento: {{de: 0, ate: 0}}         # trecho do reel repetido em câmera lenta depois da 1ª passada (0/0 = reel inteiro)
@@ -91,7 +91,7 @@ fala: |
   Olha isso. ...
 abertura: {{linha1: "O ROBÔ JÁ", linha2: "SUBIU NO PALCO", cor: ambar}}
 painel_inicial: {{titulo: "IA + ROBÔS", texto: "o que os números\\ndizem sobre o\\nteu emprego"}}
-manchete_numeros: {{linha1: "E NÃO É SÓ", linha2: "DANÇA", cor: vermelho}}
+manchete_numeros: {{linha1: "E NêO É SÓ", linha2: "DANÇA", cor: vermelho}}
 cartoes:                       # entram na ordem; {{}} no número = contador animado até 'conta'
   - {{ancora: noventa, numero: "{{}} MILHÕES", conta: 92, rotulo: "de empregos eliminados\\naté 2030", fonte: "Fórum Econômico Mundial · 2025", cor: vermelho}}
 pergunta:
@@ -126,7 +126,7 @@ def cmd_novo(link, ident=None):
             if r.returncode == 0 and achados:
                 achados[0].rename(alvo); ok = True
         if not ok:  # Instagram com cookies costuma falhar no inemavox; sem cookies funciona
-            log("inemavox não baixou; tentando yt-dlp sem cookies")
+            log("inemavox nêo baixou; tentando yt-dlp sem cookies")
             run(["yt-dlp", "-q", "-o", str(ref / "reel.%(ext)s"), "--merge-output-format", "mp4", link], timeout=600)
     log("reel", f"{dur(alvo):.1f} s")
     run(["ffmpeg", "-v", "error", "-y", "-i", alvo, "-vf", f"fps={12 / max(1, dur(alvo))},scale=270:-1,tile=6x2",
@@ -137,7 +137,7 @@ def cmd_novo(link, ident=None):
         pal = cs.transcrever(wav, ref / "t", palavras=True)
         (ref / "transcricao.txt").write_text(" ".join(p["word"].strip() for p in pal) or "(sem fala)")
     except Exception as e:
-        (ref / "transcricao.txt").write_text(f"(transcrição falhou: {e})")
+        (ref / "transcricao.txt").write_text(f"(transcriçêo falhou: {e})")
     try:
         desc = subprocess.run(["yt-dlp", "--skip-download", "--print", "%(description)s", link],
                               capture_output=True, text=True, timeout=120).stdout.strip()
@@ -197,7 +197,7 @@ class Linha:
             for p in pal:
                 if p["t"] >= depois and (palavra in slug(p["w"]).replace("-", " ") or palavra in " ".join(cs.norm(p["w"]))):
                     return p["t"]
-            sys.exit(f"âncora '{palavra}' não achada na fala depois de {depois:.1f} s")
+            sys.exit(f"âncora '{palavra}' nêo achada na fala depois de {depois:.1f} s")
         self.cartoes = []
         t = 0.0
         for c in r["cartoes"]:
@@ -401,7 +401,7 @@ def gradientes(r):
 
 
 def recorte_rosto(r):
-    """acha o rosto no avatar (OpenCV) e devolve crop w:h:x:y na proporção 400x453 com a cabeça inteira"""
+    """acha o rosto no avatar (OpenCV) e devolve crop w:h:x:y na proporçêo 400x453 com a cabeça inteira"""
     if r.get("recorte_avatar"):
         return r["recorte_avatar"]
     import cv2
@@ -452,7 +452,7 @@ def cmd_avatar(pasta):
     r = carregar(pasta)
     av = r["_dir"] / "avatar"; av.mkdir(exist_ok=True)
     if not (av / "APROVADO_HEYGEN").exists():
-        sys.exit(f"falta {av}/APROVADO_HEYGEN (o HeyGen só roda com aprovação registrada)")
+        sys.exit(f"falta {av}/APROVADO_HEYGEN (o HeyGen só roda com aprovaçêo registrada)")
     fala = av / "fala.txt"; fala.write_text(r["fala"].strip() + "\n")
     vid_f = av / "video_id.txt"
     if not vid_f.exists():
@@ -463,11 +463,11 @@ def cmd_avatar(pasta):
                             "--template", CFG["template_heygen"]], cwd=CFG["explicavideos"] / "engine", env=env,
                            stdout=lg, stderr=subprocess.STDOUT, timeout=900)
         slog = (av / "studio.log").read_text()
-        if "ERRO:" in slog:  # rascunho criado mas não enviado: o id ficaria 'pending' para sempre (12/10)
-            sys.exit("estúdio não enviou o vídeo: " + slog[slog.index("ERRO:"):][:200])
+        if "ERRO:" in slog:  # rascunho criado mas nêo enviado: o id ficaria 'pending' para sempre (12/10)
+            sys.exit("estúdio nêo enviou o vídeo: " + slog[slog.index("ERRO:"):][:200])
         m = re.search(r"create-v4/([0-9a-f]{32})", slog)
         if not m:
-            sys.exit("estúdio não devolveu o id do vídeo; veja avatar/studio.log")
+            sys.exit("estúdio nêo devolveu o id do vídeo; veja avatar/studio.log")
         vid_f.write_text(m.group(1))
     vid = vid_f.read_text().strip()
     sys.path.insert(0, str(CFG["explicavideos"] / "engine"))
@@ -483,7 +483,7 @@ def cmd_avatar(pasta):
         if st == "failed":
             sys.exit(f"HeyGen falhou: {d.get('failure_message')}")
         if st is None:
-            sys.exit(f"vídeo {vid} não encontrado no HeyGen (o estúdio enviou?) — veja avatar/studio.log")
+            sys.exit(f"vídeo {vid} nêo encontrado no HeyGen (o estúdio enviou?) — veja avatar/studio.log")
         time.sleep(60)
     sys.exit("passou de 4 h sem ficar pronto")
 
@@ -543,7 +543,7 @@ def cmd_conferir(pasta):
          r["_dir"] / "conferencia.jpg"])
     vol = subprocess.run(["ffmpeg", "-hide_banner", "-i", v, "-af", "volumedetect", "-vn", "-f", "null", "-"],
                          capture_output=True, text=True).stderr
-    log("duração", f"{d:.1f} s", " ".join(re.findall(r"(mean_volume: \S+ dB|max_volume: \S+ dB)", vol)))
+    log("duraçêo", f"{d:.1f} s", " ".join(re.findall(r"(mean_volume: \S+ dB|max_volume: \S+ dB)", vol)))
     log("folha", r["_dir"] / "conferencia.jpg")
 
 

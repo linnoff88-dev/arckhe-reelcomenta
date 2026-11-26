@@ -173,10 +173,10 @@
 <section id="fluxo"><div class="wrap">
   <span class="chip">Como funciona</span>
   <h2>Do link ao MP4 no Telegram</h2>
-  <p class="sub">Tudo fica numa pasta por edição em <code>edicoes/</code>. O único texto que você escreve é o <code>roteiro.yaml</code>.</p>
+  <p class="sub">Tudo fica numa pasta por ediçêo em <code>edicoes/</code>. O único texto que você escreve é o <code>roteiro.yaml</code>.</p>
   <div class="flow">
     <span>Link do reel</span><span class="arr">→</span>
-    <span>Download + transcrição</span><span class="arr">→</span>
+    <span>Download + transcriçêo</span><span class="arr">→</span>
     <span>roteiro.yaml (fala + números)</span><span class="arr">→</span>
     <span>Prévia</span><span class="arr">→</span>
     <span>Avatar no estúdio HeyGen</span><span class="arr">→</span>
@@ -187,7 +187,7 @@
     <div class="card"><h3>Abertura</h3><p>Quadro 0 já cheio: data dd/mm/aaaa, manchete grande e o reel rodando.</p></div>
     <div class="card"><h3>Números</h3><p>3 a 4 cartões com contador animado, rótulo curto e fonte.</p></div>
     <div class="card"><h3>Pergunta</h3><p>"Vai ficar esperando ou vai se qualificar?" — "ESPERAR" é riscado na hora da virada.</p></div>
-    <div class="card"><h3>Fecho</h3><p>Mosaico com as capas reais dos cursos do portal rolando, e o cartão final do INEMA.CLUB.</p></div>
+    <div class="card"><h3>Fecho</h3><p>Mosaico com as capas reais dos cursos do portal rolando, e o cartêo final do INEMA.CLUB.</p></div>
   </div>
 </div></section>
 
@@ -198,7 +198,7 @@
   <div class="grid g3">
     <div class="card"><h3>Python e ffmpeg</h3><p>Python 3 com Pillow, PyYAML e OpenCV (recorte do rosto), ffmpeg e yt-dlp.</p><pre><span class="k">pip</span> install pillow pyyaml opencv-python yt-dlp
 <span class="k">sudo apt</span> install ffmpeg</pre></div>
-    <div class="card"><h3>cardshorts</h3><p>Transcrição local com tempo por palavra e envio para o Telegram vêm do <a href="https://github.com/inematds/cardshorts">cardshorts</a>.</p><pre><span class="k">git clone</span> <span class="s">https://github.com/inematds/cardshorts</span></pre></div>
+    <div class="card"><h3>cardshorts</h3><p>Transcriçêo local com tempo por palavra e envio para o Telegram vêm do <a href="https://github.com/inematds/cardshorts">cardshorts</a>.</p><pre><span class="k">git clone</span> <span class="s">https://github.com/inematds/cardshorts</span></pre></div>
     <div class="card"><h3>Avatar</h3><p>O explicavideos traz o robô do estúdio do HeyGen (Playwright com o seu perfil logado) e a leitura de status.</p><pre><span class="c"># caminhos por variável, se forem outros</span>
 <span class="k">export</span> RC_EXPLICAVIDEOS=~/projetos/explicavideos
 <span class="k">export</span> RC_PERFIL_HEYGEN=~/.cache/inemaccbot/perfil-heygen</pre></div>
@@ -207,19 +207,19 @@
 
 <section id="guia"><div class="wrap">
   <span class="chip">Guia de uso · passo a passo</span>
-  <h2>Uma edição, do link ao vídeo</h2>
-  <p class="sub">No Claude Code ou no Codex, a skill <code>reelcomenta</code> faz todos os passos quando você manda o link. À mão, é assim:</p>
+  <h2>Uma ediçêo, do link ao vídeo</h2>
+  <p class="sub">No Claude Code ou no Codex, a skill <code>reelcomenta</code> faz todos os passos quando você manda o link. À mêo, é assim:</p>
 
   <div class="step"><div class="b">1</div><div>
     <h3>Baixe o reel</h3>
-    <p>Cria a pasta da edição, baixa o vídeo, faz uma folha com 12 quadros, transcreve o áudio e deixa o modelo de roteiro.</p>
+    <p>Cria a pasta da ediçêo, baixa o vídeo, faz uma folha com 12 quadros, transcreve o áudio e deixa o modelo de roteiro.</p>
 <pre><span class="k">git clone</span> <span class="s">https://github.com/inematds/reelcomenta</span> && cd reelcomenta
 <span class="k">python3</span> reelcomenta.py novo <span class="s">"https://www.instagram.com/reel/DeQ62SgBblE/"</span> --id robo-trabalho</pre>
   </div></div>
 
   <div class="step"><div class="b">2</div><div>
     <h3>Pesquise os números e escreva o roteiro</h3>
-    <p>De 3 a 4 números com fonte e ano. A fala tem de 550 a 750 caracteres, com ano e número por extenso. Cada cartão entra numa palavra da fala (a âncora).</p>
+    <p>De 3 a 4 números com fonte e ano. A fala tem de 550 a 750 caracteres, com ano e número por extenso. Cada cartêo entra numa palavra da fala (a âncora).</p>
 <pre><span class="c"># edicoes/2026-10-09-robo-trabalho/roteiro.yaml (trecho)</span>
 fala: |
   Olha isso. O robô já divide o palco com a dançarina. ...
@@ -238,7 +238,7 @@ cta: {ancora: inema, linha1: <span class="s">"+{cursos_100} CURSOS"</span>, linh
 
   <div class="step"><div class="b">4</div><div>
     <h3>Gere o avatar</h3>
-    <p>Só roda com o arquivo de aprovação. Manda a fala ao estúdio do HeyGen, confere o status e baixa o MP4 (de 30 min a 1 h na fila).</p>
+    <p>Só roda com o arquivo de aprovaçêo. Manda a fala ao estúdio do HeyGen, confere o status e baixa o MP4 (de 30 min a 1 h na fila).</p>
 <pre><span class="k">echo</span> <span class="s">"aprovado por Nei em 09/10/2026"</span> > edicoes/2026-10-09-robo-trabalho/avatar/APROVADO_HEYGEN
 <span class="k">python3</span> reelcomenta.py avatar edicoes/2026-10-09-robo-trabalho</pre>
   </div></div>
@@ -262,14 +262,14 @@ cta: {ancora: inema, linha1: <span class="s">"+{cursos_100} CURSOS"</span>, linh
       <div class="tbl"><table>
         <tr><th>Na tela</th><th>Fonte</th></tr>
         <tr><td>92 milhões de empregos eliminados até 2030</td><td>Fórum Econômico Mundial, Future of Jobs 2025</td></tr>
-        <tr><td>41% das empresas vão cortar vagas por causa da IA</td><td>Fórum Econômico Mundial, Future of Jobs 2025</td></tr>
-        <tr><td>1 em 5 empresas vai usar IA para cortar metade da gerência média</td><td>Gartner, previsão para 2026</td></tr>
+        <tr><td>41% das empresas vêo cortar vagas por causa da IA</td><td>Fórum Econômico Mundial, Future of Jobs 2025</td></tr>
+        <tr><td>1 em 5 empresas vai usar IA para cortar metade da gerência média</td><td>Gartner, previsêo para 2026</td></tr>
         <tr><td>542 mil robôs instalados nas fábricas em 2024</td><td>IFR, World Robotics 2025</td></tr>
         <tr><td>+300 cursos gratuitos</td><td>catálogo do inema.club</td></tr>
       </table></div>
       <div class="grid g4" style="margin-top:18px">
         <img src="assets/quadro-1.jpg" alt="Abertura com data e manchete" loading="lazy" style="width:100%;border-radius:10px;border:1px solid var(--line)">
-        <img src="assets/quadro-9.jpg" alt="Cartão de 41% das empresas" loading="lazy" style="width:100%;border-radius:10px;border:1px solid var(--line)">
+        <img src="assets/quadro-9.jpg" alt="Cartêo de 41% das empresas" loading="lazy" style="width:100%;border-radius:10px;border:1px solid var(--line)">
         <img src="assets/quadro-28.jpg" alt="A pergunta: esperar ou se qualificar" loading="lazy" style="width:100%;border-radius:10px;border:1px solid var(--line)">
         <img src="assets/quadro-33.jpg" alt="Mosaico com as capas dos cursos" loading="lazy" style="width:100%;border-radius:10px;border:1px solid var(--line)">
       </div>
@@ -280,10 +280,10 @@ cta: {ancora: inema, linha1: <span class="s">"+{cursos_100} CURSOS"</span>, linh
 <section id="roadmap"><div class="wrap">
   <span class="chip">Roadmap</span>
   <h2>O que vem depois</h2>
-  <p class="sub">A primeira edição validou o formato. Próximos passos:</p>
+  <p class="sub">A primeira ediçêo validou o formato. Próximos passos:</p>
   <div class="phase"><div class="tag">Agora</div><div class="d"><strong>Link → reel comentado</strong><span>Download, prévia, avatar pelo estúdio, montagem com recorte automático do rosto, conferência e entrega no Telegram.</span></div></div>
-  <div class="phase"><div class="tag">Próximo</div><div class="d"><strong>Mais layouts</strong><span>Avatar em tela dividida e versão sem avatar, com voz clonada local.</span></div></div>
-  <div class="phase"><div class="tag">Depois</div><div class="d"><strong>Publicação direta</strong><span>Subir no YouTube pelo yt-pubx e agendar Reels e TikTok junto com a entrega.</span></div></div>
+  <div class="phase"><div class="tag">Próximo</div><div class="d"><strong>Mais layouts</strong><span>Avatar em tela dividida e versêo sem avatar, com voz clonada local.</span></div></div>
+  <div class="phase"><div class="tag">Depois</div><div class="d"><strong>Publicaçêo direta</strong><span>Subir no YouTube pelo yt-pubx e agendar Reels e TikTok junto com a entrega.</span></div></div>
 </div></section>
 
 <footer>
